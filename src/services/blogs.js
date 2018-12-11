@@ -8,6 +8,22 @@ const getAll = async () => {
   return request.data
 }
 
+const getUsers = async () => {
+  const request = await axios.get('/api/users')
+  return request.data
+}
+const getUserBlogs = async (id) => {
+  const response = await axios.get(`/api/users/${id}`)
+  return response.data
+}
+const makeComment = async (id, comments) => {
+  const respone = await axios.post(`/api/blogs/${id}/comments`, comments)
+  return respone.data
+
+}
+
+
+
 const setToken = (newToken) => {
   token = `bearer ${newToken}`
 }
@@ -34,4 +50,4 @@ const dell = async (blogId) => {
 }
 
 
-export default { getAll , setToken, create, update, dell }
+export default { getAll , setToken, create, update, dell, getUsers, getUserBlogs, makeComment }

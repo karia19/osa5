@@ -2,6 +2,7 @@ import React from 'react'
 import blogService from '../services/blogs'
 import Notification from '../components/Notification'
 import SucseeNote from '../components/NotifiSucsee'
+import { Button , Form } from 'semantic-ui-react'
 
 class NewBlog extends React.Component { 
     constructor(props){
@@ -63,37 +64,39 @@ render() {
       <SucseeNote message={this.state.message} />
       <Notification message={this.state.error} />
       
-      <form onSubmit={this.send}>
-        <div>  
-          title
-          <input
-            type="text"
-            name="title"
+      <Form onSubmit={this.send}>
+        <Form.Field>
+          <label>Title</label>
+          <input 
+            type="text" 
+            name="title" 
             value={this.state.title}
-            onChange={this.getBlog}
-          />
-        </div>
-        <div>
-          author
+            onChange={this.getBlog} />
+        </Form.Field>
+        <Form.Field>
+          <label>Author</label>
           <input
             type="text"
             name="author"
             value={this.state.author}
             onChange={this.getBlog}
           />
-        </div>
-        <div>
-          url:
+        </Form.Field>
+        <Form.Field>
+          <label>Url:</label>
           <input
             type="text"
             name="url"
             value={this.state.url}
             onChange={this.getBlog}
           />
-        </div>
-        <button type="submit">add</button>
-      </form>
+        </Form.Field>
+        <Button size='small' basic color='black' type="submit">Add Blog</Button>
 
+      </Form>
+
+      
+     
     </div>
     )
        
